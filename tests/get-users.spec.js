@@ -95,78 +95,80 @@ test.describe('get users', () => {
     }
   });
 
-  test('should return code 404 on string instead of number id', async ({
-    request,
-    baseURL,
-  }) => {
-    try {
-      const response = await request.get(`${baseURL}/users/invalidId`);
-      expect(response.status()).toBe(404);
-      const body = await response.json();
-      expect(body).toStrictEqual({});
-    } catch (error) {
-      console.error('Error during test execution:', error);
-      throw error;
-    }
-  });
-
-  test('should return code 404 on special characters instead of number id', async ({
-    request,
-    baseURL,
-  }) => {
-    try {
-      const response = await request.get(`${baseURL}/users/!@#$@!$!@`);
-      expect(response.status()).toBe(404);
-      const body = await response.json();
-      expect(body).toStrictEqual({});
-    } catch (error) {
-      console.error('Error during test execution:', error);
-      throw error;
-    }
-  });
-
-  test('should return 404 on unknown endpoint with non-existent id', async ({
-    request,
-    baseURL,
-  }) => {
-    try {
-      const response = await request.get(`${baseURL}/unknown/24`);
-      expect(response.status()).toBe(404);
-      const body = await response.json();
-      expect(body).toStrictEqual({});
-    } catch (error) {
-      console.error('Error during test execution:', error);
-      throw error;
-    }
-  });
-
-  test('should return 404 on unknown endpoint with special symbols instead of number id', async ({
-    request,
-    baseURL,
-  }) => {
-    try {
-      const response = await request.get(`${baseURL}/unknown/!@!#`);
-      expect(response.status()).toBe(404);
-      const body = await response.json();
-      expect(body).toStrictEqual({});
-    } catch (error) {
-      console.error('Error during test execution:', error);
-      throw error;
-    }
-  });
-
-  test('should return 404 on unknown endpoint with string instead of number id', async ({
-    request,
-    baseURL,
-  }) => {
-    try {
-      const response = await request.get(`${baseURL}/unknown/invalidId`);
-      expect(response.status()).toBe(404);
-      const body = await response.json();
-      expect(body).toStrictEqual({});
-    } catch (error) {
-      console.error('Error during test execution:', error);
-      throw error;
-    }
-  });
+  test.describe('Receiving code 404', () => {
+    test('should return code 404 on string instead of number id', async ({
+      request,
+      baseURL,
+    }) => {
+      try {
+        const response = await request.get(`${baseURL}/users/invalidId`);
+        expect(response.status()).toBe(404);
+        const body = await response.json();
+        expect(body).toStrictEqual({});
+      } catch (error) {
+        console.error('Error during test execution:', error);
+        throw error;
+      }
+    });
+  
+    test('should return code 404 on special characters instead of number id', async ({
+      request,
+      baseURL,
+    }) => {
+      try {
+        const response = await request.get(`${baseURL}/users/!@#$@!$!@`);
+        expect(response.status()).toBe(404);
+        const body = await response.json();
+        expect(body).toStrictEqual({});
+      } catch (error) {
+        console.error('Error during test execution:', error);
+        throw error;
+      }
+    });
+  
+    test('should return 404 on unknown endpoint with non-existent id', async ({
+      request,
+      baseURL,
+    }) => {
+      try {
+        const response = await request.get(`${baseURL}/unknown/24`);
+        expect(response.status()).toBe(404);
+        const body = await response.json();
+        expect(body).toStrictEqual({});
+      } catch (error) {
+        console.error('Error during test execution:', error);
+        throw error;
+      }
+    });
+  
+    test('should return 404 on unknown endpoint with special symbols instead of number id', async ({
+      request,
+      baseURL,
+    }) => {
+      try {
+        const response = await request.get(`${baseURL}/unknown/!@!#`);
+        expect(response.status()).toBe(404);
+        const body = await response.json();
+        expect(body).toStrictEqual({});
+      } catch (error) {
+        console.error('Error during test execution:', error);
+        throw error;
+      }
+    });
+  
+    test('should return 404 on unknown endpoint with string instead of number id', async ({
+      request,
+      baseURL,
+    }) => {
+      try {
+        const response = await request.get(`${baseURL}/unknown/invalidId`);
+        expect(response.status()).toBe(404);
+        const body = await response.json();
+        expect(body).toStrictEqual({});
+      } catch (error) {
+        console.error('Error during test execution:', error);
+        throw error;
+      }
+    });
+  })
 });
