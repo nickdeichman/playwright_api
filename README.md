@@ -2,6 +2,10 @@
 
 This repository contains a suite of tests using Playwright for API testing, focusing on user management functionalities including creating, updating, retrieving, and deleting users.
 
+## Grateful for the REST application to
+
+### [Reqres](https://reqres.in/#support-heading)
+
 ## Directory Structure
 
 - **tests/**: Contains test files for user-related API endpoints.
