@@ -5,6 +5,11 @@ const userId = 2;
 const nonExistentUserId = 21551;
 
 test.describe('delete user', () => {
+
+  test.beforeEach(() => {
+    nock.cleanAll();
+  });
+
   test('should delete a user', async ({ request, baseURL }) => {
     try {
       const response = await request.delete(`${baseURL}/users/${userId}`);
@@ -86,6 +91,10 @@ test.describe('delete user', () => {
         );
         throw error;
       }
+    });
+
+    test.afterEach(async () => {
+      nock.cleanAll();
     });
   });
 });
