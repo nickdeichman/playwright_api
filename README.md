@@ -14,6 +14,12 @@ This repository contains a suite of tests using Playwright for API testing, focu
 - **expectedResultsGet.js**: Contains expected results for user retrieval tests.
 - **package.json**: Lists dependencies, including Playwright and Nock.
 
+## Technologies:
+
+- **JavaScript**: The programming language used for writing the tests.
+- **Playwright**: A Node.js library for browser automation, utilized for API testing in this project.
+- **Nock**: A HTTP mocking library for Node.js, used to intercept and simulate HTTP requests and responses.
+
 ## Testing Scenarios
 
 ### get-user.spec.js
