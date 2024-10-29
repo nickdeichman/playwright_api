@@ -7,6 +7,9 @@ const newUserData = {
   job: 'leader',
 };
 
+const invalidFieldData = ['Name123', '', '     ', 'Name!@#'];
+
+
 test.describe('create user', () => {
   test.beforeEach(() => {
     nock.cleanAll();
@@ -161,8 +164,7 @@ test.describe('create user', () => {
       request,
       baseURL,
     }) => {
-      const invalidNames = ['Name123', '', '     ', 'Name!@#'];
-      for (const name of invalidNames) {
+      for (const name of invalidFieldData) {
         nock(baseURL).post('/users', { name, job: 'test' }).reply(400, {
           error: errorMessages.nameFieldWithProhibitedCharacters,
         });
@@ -298,8 +300,7 @@ test.describe('create user', () => {
       request,
       baseURL,
     }) => {
-      const invalidJobs = ['Name123', '', '     ', 'Name!@#'];
-      for (const job of invalidJobs) {
+      for (const job of invalidFieldData) {
         nock(baseURL).post('/users', { name: 'TestName', job }).reply(400, {
           error: errorMessages.jobFieldWithProhibitedCharacters,
         });

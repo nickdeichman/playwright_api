@@ -7,6 +7,8 @@ const newUserData = {
   job: 'leader',
 };
 
+const invalidFieldData = ['Name123', '', '     ', 'Name!@#'];
+
 const userId = 2;
 const nonExistentUserId = 21551;
 
@@ -207,8 +209,7 @@ test.describe('update user', () => {
       request,
       baseURL,
     }) => {
-      const invalidNames = ['Name123', '', '     ', 'Name!@#'];
-      for (const name of invalidNames) {
+      for (const name of invalidFieldData) {
         nock(baseURL)
           .put(`/users/${userId}`, { name, job: 'test' })
           .reply(400, {
@@ -337,8 +338,7 @@ test.describe('update user', () => {
       request,
       baseURL,
     }) => {
-      const invalidJobs = ['Name123', '', '     ', 'Name!@#'];
-      for (const job of invalidJobs) {
+      for (const job of invalidFieldData) {
         nock(baseURL)
           .put(`/users/${userId}`, { name: 'TestName', job })
           .reply(400, {
